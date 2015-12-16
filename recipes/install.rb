@@ -31,6 +31,8 @@ apt_repository "aptly" do
   keyserver node['aptly']['keyserver']
   key node['aptly']['key']
   action :add
+  retries     10
+  retry_delay 10
 end
 
 package "aptly"

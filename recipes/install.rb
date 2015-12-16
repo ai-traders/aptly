@@ -43,7 +43,7 @@ end
 user node['aptly']['user'] do
   gid node['aptly']['group']
   shell '/bin/bash'
-  home node['aptly']['rootdir']
+  home node['aptly']['home']
   system true
   action :create
 end

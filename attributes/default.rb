@@ -7,6 +7,7 @@ default['aptly']['key'] = '2A194991'
 default['aptly']['user'] = 'aptly'
 default['aptly']['group'] = 'aptly'
 
+default['aptly']['home'] = "/home/aptly"
 default['aptly']['rootdir'] = "/opt/aptly"
 default['aptly']['downloadconcurrency'] = 4
 default['aptly']['architectures'] = []

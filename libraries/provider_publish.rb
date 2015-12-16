@@ -49,8 +49,9 @@ class Chef
       end
 
       action :drop do
+        fail 'You must specify distribution for drop operation' unless new_resource.distribution
         execute "Stop publishing - #{new_resource.prefix} #{new_resource.name}" do
-          command "aptly publish drop #{new_resource.name} #{new_resource.prefix}"
+          command "aptly publish drop #{new_resource.distribution} #{new_resource.prefix}"
           user node['aptly']['user']
           group node['aptly']['group']
           only_if %{ aptly publish list | grep #{new_resource.name} }

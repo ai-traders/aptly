@@ -30,8 +30,9 @@ class Chef
       end
 
       action :create do
+        batch = '--batch' if new_resource.batch
         execute "Publish #{new_resource.type} - #{new_resource.name}" do
-          command "aptly publish #{new_resource.type} #{new_resource.cli_args(:create)} #{new_resource.name} #{new_resource.prefix}"
+          command "aptly publish #{new_resource.type} #{new_resource.cli_args(:create)} #{batch} #{new_resource.name} #{new_resource.prefix}"
           user node['aptly']['user']
           group node['aptly']['group']
           environment aptly_env
@@ -40,8 +41,9 @@ class Chef
       end
 
       action :update do
+        batch = '--batch' if new_resource.batch
         execute "Updating distribution - #{new_resource.prefix} #{new_resource.name}" do
-          command "aptly publish update #{new_resource.cli_args(:update)} #{new_resource.distribution} #{new_resource.prefix}"
+          command "aptly publish update #{new_resource.cli_args(:update)} #{batch} #{new_resource.distribution} #{new_resource.prefix}"
           user node['aptly']['user']
           group node['aptly']['group']
           environment aptly_env

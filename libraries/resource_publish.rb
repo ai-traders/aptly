@@ -39,9 +39,16 @@ class Chef
       attribute :name, :kind_of => String, :name_attribute => true
       attribute :type, :kind_of => String, :default => nil
       attribute :prefix, :kind_of => String, :default => nil
+      attribute :batch, :kind_of => [ TrueClass, FalseClass ], default: true
 
       attribute :distribution, :kind_of => String, :default => nil,
         cli_option: true, cli_actions: [ :create ]
+      attribute :passphrase, :kind_of => String, :default => nil,
+        cli_option: true, cli_actions: [ :create, :update ]
+      attribute :passphrase_file, :kind_of => String, :default => nil,
+        cli_option: true, cli_actions: [ :create, :update ]
+      attribute :gpg_key, :kind_of => String, :default => nil,
+        cli_option: true, cli_actions: [ :create, :update ]
 
       attribute :force_overwrite, :equal_to => [ true, false ], default: nil,
         cli_option: true, cli_actions: [ :create, :update ]

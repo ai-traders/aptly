@@ -56,7 +56,7 @@ class Chef
           command "aptly publish drop #{new_resource.distribution} #{new_resource.prefix}"
           user node['aptly']['user']
           group node['aptly']['group']
-          only_if %{ aptly publish list | grep #{new_resource.name} }
+          only_if %{ aptly publish list | grep #{new_resource.prefix}/#{new_resource.distribution} }
           environment aptly_env
         end
       end

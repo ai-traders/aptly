@@ -34,3 +34,4 @@ attribute :keyid, :kind_of => String, :default => nil
 attribute :keyserver, :kind_of => String, :default => nil
 attribute :keyfile, :kind_of => String, :default => nil
 attribute :filter, :kind_of => String, :default => nil
+attribute :options, :kind_of => String, :default => nil

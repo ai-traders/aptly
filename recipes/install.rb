@@ -35,7 +35,9 @@ apt_repository "aptly" do
   retry_delay 10
 end
 
-package "aptly"
+package "aptly" do
+  options node['aptly']['install_options'] if node['aptly']['install_options']
+end
 package "graphviz"
 
 group node['aptly']['group'] do

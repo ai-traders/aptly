@@ -53,7 +53,7 @@ action :create do
   end
   filter_args = "-filter '#{new_resource.filter}'" if new_resource.filter
   execute "Creating mirror - #{new_resource.name}" do
-    command "aptly mirror create #{filter_args} #{new_resource.name} #{new_resource.uri} #{new_resource.distribution} #{new_resource.component}"
+    command "aptly mirror create #{filter_args} #{new_resource.options} #{new_resource.name} #{new_resource.uri} #{new_resource.distribution} #{new_resource.component}"
     user node['aptly']['user']
     group node['aptly']['group']
     environment aptly_env

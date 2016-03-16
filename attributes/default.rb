@@ -20,3 +20,7 @@ default['aptly']['gpgdisableverify'] = false
 default['aptly']['downloadsourcepackages'] = false
 default['aptly']['ppadistributorid'] = ""
 default['aptly']['ppacodename'] = ""
+# Not set by default, but will be respected. It was needed to set
+# `--force-yes`, because `apt-get -q -y install aptly=0.9.5`
+# returned 100.
+# default['aptly']['install_options']

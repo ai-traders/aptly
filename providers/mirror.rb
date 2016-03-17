@@ -63,7 +63,7 @@ end
 
 action :update do
   execute "Updating mirror - #{new_resource.name}" do
-    command "aptly mirror update #{new_resource.name}"
+    command "aptly mirror update #{new_resource.options} #{new_resource.name}"
     user node['aptly']['user']
     group node['aptly']['group']
     environment aptly_env
@@ -73,7 +73,7 @@ end
 
 action :drop do
   execute "Droping mirror - #{new_resource.name}" do
-    command "aptly mirror drop #{new_resource.name}"
+    command "aptly mirror drop #{new_resource.options} #{new_resource.name}"
     user node['aptly']['user']
     group node['aptly']['group']
     environment aptly_env
